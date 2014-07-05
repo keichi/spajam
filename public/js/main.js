@@ -1,6 +1,8 @@
 $(document).ready(function() {
 	//var socket = io.connect("http://192.168.100.139");
 	var socket = io.connect();
+	var uid = get_url_vars().uid;
+
 	var voice = $("#voice")[0];
 	voice.load();
 
@@ -25,7 +27,7 @@ $(document).ready(function() {
 	$("#do-tsukkomi").on("click", function() {
 		if (started) {
 			socket.emit("tsukkomi", {
-				uid: "dummy"
+				uid: uid
 			});
 		}
 	});
@@ -45,7 +47,7 @@ $(document).ready(function() {
 		{
 			setTimeout(function() {
 				socket.emit("tsukkomi", {
-					uid: "dummy"
+					uid: uid
 				});
 			});
 			nowState = state.other;
@@ -78,3 +80,14 @@ $(document).ready(function() {
 		$("#result").html("");
     },false);
 });
+
+function get_url_vars()
+{
+  var vars = new Object, params;
+  var temp_params = window.location.search.substring(1).split('&');
+  for(var i = 0; i <temp_params.length; i++) {
+    params = temp_params[i].split('=');
+    vars[params[0]] = params[1];
+  }
+  return vars;
+}
