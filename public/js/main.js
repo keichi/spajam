@@ -1,16 +1,20 @@
 $(document).ready(function() {
 	//var socket = io.connect("http://192.168.100.139");
 	var socket = io.connect();
+	var voice = $("#voice")[0];
+	voice.load();
 
 	socket.on("tsukkomi", function (data) {
 		console.log("uid:" + data.uid);
-		$("#voice")[0].play();
+		//$("#voice")[0].play();
+		voice.play();
 	});
 
 	var started = false;
 
 	$("#do-load").on("click", function() {
-		$("#voice")[0].load();
+		//$("#voice")[0].load();
+	    voice.load();
 	});
 
 	$("#voice").on("canplay", function() {
