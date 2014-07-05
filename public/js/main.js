@@ -1,5 +1,6 @@
 $(document).ready(function() {
-	var socket = io.connect("http://192.168.100.139");
+	//var socket = io.connect("http://192.168.100.139");
+	var socket = io.connect();
 
 	socket.on("tsukkomi", function (data) {
 		console.log("uid:" + data.uid);
