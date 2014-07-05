@@ -3,20 +3,36 @@ $(document).ready(function() {
 	var socket = io.connect();
 	var uid = get_url_vars().uid;
 
-	var voice = $("#voice")[0];
+	var voice1 = $("#voice1")[0];
 	var voice2 = $("#voice2")[0];
-	voice.load();
+	var voice3 = $("#voice3")[0];
+	var voice4 = $("#voice4")[0];
+	var voice5 = $("#voice5")[0];
+	voice1.load();
 
 	socket.on("tsukkomi", function (data) {
 		console.log("uid:" + data.uid);
 		//$("#voice")[0].play();
-		if (data.uid == "A") {
-			voice.load();
-			voice.play();
+		if (data.uid == "1") {
+			voice1.load();
+			voice1.play();
+			//playAudio('audio/omoitaiko.mp3');
 		}
-		if (data.uid == "B") {
+		if (data.uid == "2") {
 			voice2.load();
 			voice2.play();
+		}
+		if (data.uid == "3") {
+			voice3.load();
+			voice3.play();
+		}
+		if (data.uid == "4") {
+			voice4.load();
+			voice4.play();
+		}
+		if (data.uid == "5") {
+			voice5.load();
+			voice5.play();
 		}
 	});
 
@@ -24,10 +40,10 @@ $(document).ready(function() {
 
 	$("#do-load").on("click", function() {
 		//$("#voice")[0].load();
-	    voice.load();
+	    voice1.load();
 	});
 
-	$("#voice").on("canplay", function() {
+	$("#voice1").on("canplay", function() {
 		started = true;
 		$("#do-load").remove();
 	})
@@ -98,4 +114,29 @@ function get_url_vars()
     vars[params[0]] = params[1];
   }
   return vars;
+}
+
+function playAudio(path) {
+	window.AudioContext = window.AudioContext || window.webkitAudioContext;
+	var context = new AudioContext();
+	var xhr = new XMLHttpRequest();
+	var url = path;
+	xhr.responseType = 'arraybuffer';
+
+	xhr.onload = function() {
+	    if (xhr.status === 200) {
+	        var arrayBuffer = xhr.response;
+	        if (arrayBuffer instanceof ArrayBuffer) {
+	            var successCallback = function(audioBuffer) {
+	            };
+	            var errorCallback = function() {
+	                window.alert('Error : "decodeAudioData" method !!');
+	            };
+	            context.decodeAudioData(arrayBuffer, successCallback, errorCallback);
+	        }
+	    }
+	};
+
+	xhr.open('GET', url, true);
+	xhr.send(null);
 }
