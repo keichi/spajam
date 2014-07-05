@@ -14,12 +14,14 @@ html {
 }
 
 ::-moz-selection {
-    background: #b3d4fc;
+    //background: #b3d4fc;
+    background: black;
     text-shadow: none;
 }
 
 ::selection {
-    background: #b3d4fc;
+    //background: #b3d4fc;
+    background: black;
     text-shadow: none;
 }
 
@@ -75,18 +77,21 @@ body {
    =================== */
 
 .header-container {
-    border-bottom: 20px solid #e44d26;
+    //border-bottom: 20px solid #e44d26;
+    border-bottom: 20px solid black;
 }
 
 .footer-container,
 .main aside {
-    border-top: 20px solid #e44d26;
+    //border-top: 20px solid #e44d26;
+    border-top: 20px solid black;
 }
 
 .header-container,
 .footer-container,
 .main aside {
-    background: #f16529;
+    //background: #f16529;
+    background: black;
 }
 
 .title {
