@@ -4,12 +4,20 @@ $(document).ready(function() {
 	var uid = get_url_vars().uid;
 
 	var voice = $("#voice")[0];
+	var voice2 = $("#voice2")[0];
 	voice.load();
 
 	socket.on("tsukkomi", function (data) {
 		console.log("uid:" + data.uid);
 		//$("#voice")[0].play();
-		voice.play();
+		if (data.uid == "A") {
+			voice.load();
+			voice.play();
+		}
+		if (data.uid == "B") {
+			voice2.load();
+			voice2.play();
+		}
 	});
 
 	var started = false;
