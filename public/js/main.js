@@ -8,7 +8,7 @@ $(document).ready(function() {
 	var voice3 = $("#voice3")[0];
 	var voice4 = $("#voice4")[0];
 	var voice5 = $("#voice5")[0];
-	voice1.load();
+	//voice1.load();
 
 	socket.on("tsukkomi", function (data) {
 		console.log("uid:" + data.uid);
@@ -21,6 +21,7 @@ $(document).ready(function() {
 		if (data.uid == "2") {
 			voice2.load();
 			voice2.play();
+			//playAudio('audio/omoitaiko.mp3');
 		}
 		if (data.uid == "3") {
 			voice3.load();
@@ -39,6 +40,15 @@ $(document).ready(function() {
 	});
 
 	var started = false;
+
+	$("#pre-load").on("click", function() {
+		var uid = get_url_vars().uid;
+	    if (uid == "1") voice1.load();
+	    if (uid == "2") voice2.load();
+	    if (uid == "3") voice3.load();
+	    if (uid == "4") voice4.load();
+	    if (uid == "5") voice5.load();
+	});
 
 	$("#do-load").on("click", function() {
 		//$("#voice")[0].load();
