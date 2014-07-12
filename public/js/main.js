@@ -42,12 +42,17 @@ $(document).ready(function() {
 	var started = false;
 
 	$("#pre-load").on("click", function() {
-		var uid = get_url_vars().uid;
-	    if (uid == "1") voice1.load();
-	    if (uid == "2") voice2.load();
-	    if (uid == "3") voice3.load();
-	    if (uid == "4") voice4.load();
-	    if (uid == "5") voice5.load();
+		//var uid = get_url_vars().uid;
+	    //if (uid == "1") 
+	    	voice1.load();
+	    //if (uid == "2") 
+	    	voice2.load();
+	    //if (uid == "3") 
+	    	voice3.load();
+	    //if (uid == "4") 
+	    	voice4.load();
+	    //if (uid == "5") 
+	    	voice5.load();
 	});
 
 	$("#do-load").on("click", function() {
