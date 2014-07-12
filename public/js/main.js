@@ -34,6 +34,8 @@ $(document).ready(function() {
 			voice5.load();
 			voice5.play();
 		}
+		//voice1.load();
+		//voice1.play();
 	});
 
 	var started = false;
